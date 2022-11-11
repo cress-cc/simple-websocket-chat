@@ -1,5 +1,6 @@
-Flask
-Flask-SocketIO==5.2.0
+flask
+flask-socketio==5.2.0
+glitch
 simple-websocket
 kombu
 importlib-metadata==4.13.0
