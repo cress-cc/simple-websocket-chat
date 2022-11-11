@@ -1,11 +1,16 @@
+from decouple import config
 from flask import Flask, render_template, session
 from flask_socketio import SocketIO, emit
 import time
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config['DEBUG'] = config('DEBUG')
 
-socketio = SocketIO(app, message_queue=app.config['MESSAGE_QUEUE'], cors_allowed_origins=app.config['CORS_ALLOWED_ORIGINS'])
+socketio = SocketIO(
+    app,
+    message_queue=config('MESSAGE_QUEUE'),
+    cors_allowed_origins=config('CORS_ALLOWED_ORIGINS')
+)
 
 user_count = 0
 login_users = []

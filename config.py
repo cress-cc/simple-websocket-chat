@@ -1,4 +1,0 @@
-DEBUG = True
-SECRET_KEY = 'secret key'
-MESSAGE_QUEUE=''
-CORS_ALLOWED_ORIGINS='*'
