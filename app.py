@@ -1,6 +1,9 @@
 import os, time
 from flask import Flask, render_template, session
 from flask_socketio import SocketIO, emit
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
