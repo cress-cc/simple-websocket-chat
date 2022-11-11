@@ -1,15 +1,13 @@
-from decouple import config
+import os, time
 from flask import Flask, render_template, session
 from flask_socketio import SocketIO, emit
-import time
 
 app = Flask(__name__)
-app.config['DEBUG'] = config('DEBUG')
 
 socketio = SocketIO(
     app,
-    message_queue=config('MESSAGE_QUEUE'),
-    cors_allowed_origins=config('CORS_ALLOWED_ORIGINS')
+    message_queue=os.environ['MESSAGE_QUEUE'],
+    cors_allowed_origins=os.environ['CORS_ALLOWED_ORIGINS']
 )
 
 user_count = 0
