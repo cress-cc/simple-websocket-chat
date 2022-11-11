@@ -1,3 +1,5 @@
 Flask
-Flask-SocketIO
+Flask-SocketIO==5.2.0
 simple-websocket
+kombu
+importlib-metadata==4.13.0
