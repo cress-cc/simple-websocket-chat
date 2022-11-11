@@ -9,7 +9,7 @@ $(document).ready(() => {
 
         $('#login_users').empty();
         $.each(msg.login_users, (index, login_user) => {
-            $('#login_users').append('<li>' + login_user + '</li>');
+            $('#login_users').append($('<li/>').text(login_user));
         });
     });
 
@@ -17,8 +17,9 @@ $(document).ready(() => {
         $('#messages').empty();
         $.each(msg.messages, (index, m) => {
             var timestamp = new Date(m.timestamp * 1000);
-            $('#messages').prepend('<li>' + m.from + ' : ' + m.message
-                    + '<span class="timestamp">' + timestamp.toLocaleDateString() + ' ' + timestamp.toLocaleTimeString() + '</span>' + '</li>');
+            var $ts = $('<span class="timestamp"/>').text(timestamp.toLocaleDateString() + ' ' + timestamp.toLocaleTimeString());
+            var $li = $('<li/>').text(m.from + ' : ' + m.message).append($ts);
+            $('#messages').prepend($li);
         });
     });
 
@@ -31,8 +32,9 @@ $(document).ready(() => {
 
     socket.on('message_update', msg => {
         var timestamp = new Date(msg.timestamp * 1000);
-        $('#messages').prepend('<li>' + msg.from + ' : ' + msg.message
-                + '<span class="timestamp">' + timestamp.toLocaleDateString() + ' ' + timestamp.toLocaleTimeString() + '</span>' + '</li>');
+        var $ts = $('<span class="timestamp"/>').text(timestamp.toLocaleDateString() + ' ' + timestamp.toLocaleTimeString());
+        var $li = $('<li/>').text(msg.from + ' : ' + msg.message).append($ts);
+        $('#messages').prepend($li);
     });
 
     socket.on('logout', msg => {
