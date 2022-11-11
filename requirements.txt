@@ -1,6 +1,6 @@
 flask
 flask-socketio==5.2.0
-glitch
+gunicorn
 simple-websocket
 kombu
 importlib-metadata==4.13.0
